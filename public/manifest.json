@@ -1,0 +1,10 @@
+
+{
+  "short_name": "M3App",
+  "name": "Material 3 Android App",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#6750A4",
+  "background_color": "#FEF7FF"
+}

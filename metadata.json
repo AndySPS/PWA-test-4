@@ -1,0 +1,5 @@
+{
+  "name": "M3 Android Foundation",
+  "description": "A Material 3 based Android mobile application foundation with a standardized theme system, 8dp grid, and accessible touch targets.",
+  "requestFramePermissions": []
+}

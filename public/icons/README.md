@@ -1,0 +1,6 @@
+
+# Launcher Icons
+Place adaptive icons here:
+- icon-192.png
+- icon-512.png
+- maskable-icon.png
