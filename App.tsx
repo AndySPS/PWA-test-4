@@ -13,31 +13,16 @@ const HomeScreen: React.FC = () => {
   const theme = useTheme();
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full px-4">
-      <div className="flex flex-col items-center gap-6 mb-12">
-        {/* Stylized 'A' Logo as seen in the image */}
-        <div className="w-48 h-48 relative flex items-center justify-center">
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            {/* Right dark part of the A */}
-            <path 
-              d="M50 20 L85 80 Q87 85 80 85 L60 85 Q55 85 55 80 L50 70 Z" 
-              fill="#E1E2E9" 
-            />
-            {/* Left light part of the A */}
-            <path 
-              d="M50 20 L15 80 Q13 85 20 85 L40 85 Q45 85 45 80 L50 70 Z" 
-              fill="#E8F1FF" 
-            />
-          </svg>
-        </div>
-        
-        {/* Seven Peaks Text Logo */}
-        <div 
-          className="text-4xl font-black tracking-tighter opacity-20"
-          style={{ color: theme.colors.secondary.base }}
-        >
-          SEVEN PEAKS
-        </div>
+    <div className="relative flex flex-col items-center justify-center w-full h-full px-4 overflow-hidden">
+      {/* Faded Background Image */}
+      <img 
+        src="https://sevenpeakssoftware.com/hubfs/Vertical=True%2c%20Horizontal=False%2c%20Type=Seven%20Peaks%2c%20Color=Dark.svg"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-[0.03] pointer-events-none"
+      />
+
+      <div className="relative z-10 flex flex-col items-center gap-6 mb-12">
+        {/* Stylized Logo Shape Removed per request */}
       </div>
     </div>
   );
