@@ -6,6 +6,10 @@
       "destination": "/public/sw.js"
     },
     {
+      "source": "/manifest.json",
+      "destination": "/public/manifest.json"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
