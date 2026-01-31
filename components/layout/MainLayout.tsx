@@ -9,6 +9,8 @@ interface MainLayoutProps {
   activeTab?: string;
   onTabChange?: (tab: string) => void;
   onMenuClick?: () => void;
+  onBack?: () => void;
+  hideBottomNav?: boolean;
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ 
@@ -16,18 +18,29 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   children, 
   activeTab = 'home',
   onTabChange,
-  onMenuClick 
+  onMenuClick,
+  onBack,
+  hideBottomNav = false
 }) => {
   const theme = useTheme();
 
   return (
     <div className="flex flex-col h-screen w-full overflow-hidden" style={{ backgroundColor: theme.colors.surface.base }}>
-      {/* Top App Bar (Center Aligned Style) */}
+      {/* Top App Bar (M3 Center-aligned style with optional back button) */}
       <header 
         className="flex items-center px-4 h-16 shrink-0 z-10"
         style={{ color: theme.colors.surface.on }}
       >
-        <div className="w-12" /> {/* Spacer to center title */}
+        <div className="w-12 flex items-center justify-start">
+          {onBack && (
+            <button 
+              onClick={onBack}
+              className="p-2 rounded-full active:bg-black/5 outline-none"
+            >
+              <Icon name={IconName.Back} size={24} color={theme.colors.surface.on} />
+            </button>
+          )}
+        </div>
         <h1 
           className="flex-1 text-center font-normal"
           style={{ 
@@ -38,7 +51,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
         >
           {title}
         </h1>
-        <div className="w-12" /> {/* Spacer to center title */}
+        <div className="w-12" /> {/* Right spacer for symmetry */}
       </header>
 
       {/* Main Content Area */}
@@ -46,27 +59,29 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
         {children}
       </main>
 
-      {/* Navigation Bar (Bottom Nav) - Updated to match 2 items */}
-      <nav 
-        className="h-20 flex justify-around items-center px-8 pb-safe z-20 border-t"
-        style={{ 
-          backgroundColor: theme.colors.surface.base,
-          borderColor: theme.colors.outlineVariant
-        }}
-      >
-        <NavItem 
-          label="Home" 
-          icon={IconName.Home} 
-          active={activeTab === 'home'} 
-          onClick={() => onTabChange?.('home')} 
-        />
-        <NavItem 
-          label="Account" 
-          icon={IconName.User} 
-          active={activeTab === 'account'} 
-          onClick={() => onTabChange?.('account')} 
-        />
-      </nav>
+      {/* Navigation Bar (Bottom Nav) */}
+      {!hideBottomNav && (
+        <nav 
+          className="h-20 flex justify-around items-center px-8 pb-safe z-20 border-t"
+          style={{ 
+            backgroundColor: theme.colors.surface.base,
+            borderColor: theme.colors.outlineVariant
+          }}
+        >
+          <NavItem 
+            label="Home" 
+            icon={IconName.Home} 
+            active={activeTab === 'home'} 
+            onClick={() => onTabChange?.('home')} 
+          />
+          <NavItem 
+            label="Account" 
+            icon={IconName.User} 
+            active={activeTab === 'account'} 
+            onClick={() => onTabChange?.('account')} 
+          />
+        </nav>
+      )}
     </div>
   );
 };

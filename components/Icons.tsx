@@ -18,7 +18,9 @@ import {
   LogIn,
   UserCog,
   FileText,
-  LogOut
+  LogOut,
+  Lock,
+  Trash2
 } from 'lucide-react';
 
 export enum IconName {
@@ -39,7 +41,9 @@ export enum IconName {
   LogIn = 'login',
   AccountManagement = 'account-management',
   Legal = 'legal',
-  LogOut = 'logout'
+  LogOut = 'logout',
+  Password = 'password',
+  Delete = 'delete'
 }
 
 interface IconProps {
@@ -68,6 +72,8 @@ const iconMap: Record<IconName, React.FC<any>> = {
   [IconName.AccountManagement]: UserCog,
   [IconName.Legal]: FileText,
   [IconName.LogOut]: LogOut,
+  [IconName.Password]: Lock,
+  [IconName.Delete]: Trash2,
 };
 
 export const Icon: React.FC<IconProps> = ({ name, size = 24, color = 'currentColor', className }) => {
