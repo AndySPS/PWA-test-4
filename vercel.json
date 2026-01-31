@@ -1,0 +1,13 @@
+
+{
+  "rewrites": [
+    {
+      "source": "/sw.js",
+      "destination": "/public/sw.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
