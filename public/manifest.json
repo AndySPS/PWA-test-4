@@ -4,13 +4,13 @@
   "name": "Material 3 Android App",
   "icons": [
     {
-      "src": "/public/icons/icon-192.png",
+      "src": "/icons/icon-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "/public/icons/icon-512.png",
+      "src": "/icons/icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
