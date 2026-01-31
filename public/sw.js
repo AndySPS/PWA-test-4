@@ -1,4 +1,3 @@
-
 const CACHE_NAME = 'm3-app-cache-v1';
 const ASSETS = [
   '/',
