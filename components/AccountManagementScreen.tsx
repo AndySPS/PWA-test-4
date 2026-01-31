@@ -15,7 +15,7 @@ const AccountManagementItem: React.FC<AccountManagementItemProps> = ({ icon, lab
   return (
     <button 
       onClick={onClick}
-      className="w-full flex items-center gap-4 px-6 h-[72px] active:bg-black/5 transition-colors"
+      className="w-full flex items-center gap-4 px-6 h-[72px] active:bg-black/5 transition-colors text-left"
       style={{ 
         borderColor: theme.colors.outlineVariant,
         borderBottomWidth: '1px'
@@ -29,7 +29,7 @@ const AccountManagementItem: React.FC<AccountManagementItemProps> = ({ icon, lab
         />
       </div>
       <span 
-        className="flex-1 text-left"
+        className="flex-1"
         style={{ 
           fontSize: theme.typography.body.large.fontSize,
           color: isDestructive ? theme.colors.error.base : theme.colors.surface.on,
@@ -47,13 +47,18 @@ const AccountManagementItem: React.FC<AccountManagementItemProps> = ({ icon, lab
   );
 };
 
-export const AccountManagementScreen: React.FC = () => {
+interface AccountManagementScreenProps {
+  onProfileClick: () => void;
+}
+
+export const AccountManagementScreen: React.FC<AccountManagementScreenProps> = ({ onProfileClick }) => {
   return (
     <div className="flex flex-col w-full h-full">
       <div className="flex flex-col pt-2">
         <AccountManagementItem 
           icon={IconName.User} 
           label="Profile" 
+          onClick={onProfileClick}
         />
         <AccountManagementItem 
           icon={IconName.Password} 

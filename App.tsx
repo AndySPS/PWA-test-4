@@ -5,11 +5,12 @@ import { MainLayout } from './components/layout/MainLayout';
 import { SplashScreen } from './components/SplashScreen';
 import { WelcomeScreen } from './components/WelcomeScreen';
 import { AccountManagementScreen } from './components/AccountManagementScreen';
+import { ProfileScreen } from './components/ProfileScreen';
 import { useTheme } from './theme/ThemeConfig';
 import { Icon, IconName } from './components/Icons';
 
 type AppState = 'splash' | 'welcome' | 'dashboard';
-type DashboardSubState = 'main' | 'account-management';
+type DashboardSubState = 'main' | 'account-management' | 'profile';
 
 const HomeScreen: React.FC = () => {
   const theme = useTheme();
@@ -165,10 +166,16 @@ const AppContent: React.FC = () => {
   let onBack: (() => void) | undefined = undefined;
   let hideBottomNav = false;
 
-  if (activeTab === 'account' && dashboardSubState === 'account-management') {
-    title = "Account Management";
-    onBack = () => setDashboardSubState('main');
-    hideBottomNav = true; // Match common Android pattern for deep settings
+  if (activeTab === 'account') {
+    if (dashboardSubState === 'account-management') {
+      title = "Account Management";
+      onBack = () => setDashboardSubState('main');
+      hideBottomNav = true;
+    } else if (dashboardSubState === 'profile') {
+      title = "Profile";
+      onBack = () => setDashboardSubState('account-management');
+      hideBottomNav = true;
+    }
   }
 
   return (
@@ -177,20 +184,28 @@ const AppContent: React.FC = () => {
       activeTab={activeTab}
       onTabChange={(tab) => {
         setActiveTab(tab);
-        setDashboardSubState('main'); // Reset sub-state when changing tabs
+        setDashboardSubState('main'); 
       }}
       onBack={onBack}
       hideBottomNav={hideBottomNav}
     >
       {activeTab === 'home' ? (
         <HomeScreen />
-      ) : dashboardSubState === 'account-management' ? (
-        <AccountManagementScreen />
       ) : (
-        <AccountScreen 
-          onSignOut={() => setAppState('welcome')} 
-          onOpenMgmt={() => setDashboardSubState('account-management')}
-        />
+        <>
+          {dashboardSubState === 'main' && (
+            <AccountScreen 
+              onSignOut={() => setAppState('welcome')} 
+              onOpenMgmt={() => setDashboardSubState('account-management')}
+            />
+          )}
+          {dashboardSubState === 'account-management' && (
+            <AccountManagementScreen onProfileClick={() => setDashboardSubState('profile')} />
+          )}
+          {dashboardSubState === 'profile' && (
+            <ProfileScreen />
+          )}
+        </>
       )}
     </MainLayout>
   );
