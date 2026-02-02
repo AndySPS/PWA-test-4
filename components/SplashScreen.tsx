@@ -11,10 +11,7 @@ export const SplashScreen: React.FC = () => {
       style={{ backgroundColor: theme.colors.primary.base }}
     >
       <div className="flex flex-col items-center gap-4">
-        {/* Simplified SVG Logo for Seven Peaks */}
-        <div className="flex items-center text-white font-black text-4xl tracking-tighter">
-          SEVEN PEAKS
-        </div>
+        {/* Branding text removed as per user request */}
         <div 
           className="w-12 h-1 rounded-full overflow-hidden bg-white/20 relative"
         >

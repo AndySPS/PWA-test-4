@@ -22,28 +22,7 @@ const HomeScreen: React.FC = () => {
         alt=""
         className="absolute inset-0 w-full h-full object-cover opacity-[0.03] pointer-events-none"
       />
-
-      <div className="relative z-10 flex flex-col items-center gap-6 mb-12">
-        <div className="w-48 h-48 relative flex items-center justify-center">
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            <path 
-              d="M50 20 L85 80 Q87 85 80 85 L60 85 Q55 85 55 80 L50 70 Z" 
-              fill="#E1E2E9" 
-            />
-            <path 
-              d="M50 20 L15 80 Q13 85 20 85 L40 85 Q45 85 45 80 L50 70 Z" 
-              fill="#E8F1FF" 
-            />
-          </svg>
-        </div>
-        
-        <div 
-          className="text-4xl font-black tracking-tighter opacity-20"
-          style={{ color: theme.colors.secondary.base }}
-        >
-          SEVEN PEAKS
-        </div>
-      </div>
+      {/* Branding elements removed as per user request */}
     </div>
   );
 };
