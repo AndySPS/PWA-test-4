@@ -8,14 +8,17 @@ export const SplashScreen: React.FC = () => {
   return (
     <div 
       className="flex items-center justify-center w-full h-full animate-fade-in"
-      style={{ backgroundColor: theme.colors.primary.base }}
+      style={{ backgroundColor: theme.colors.surface.base }}
     >
       <div className="flex flex-col items-center gap-4">
-        {/* Branding text removed as per user request */}
         <div 
-          className="w-12 h-1 rounded-full overflow-hidden bg-white/20 relative"
+          className="w-12 h-1 rounded-full overflow-hidden relative"
+          style={{ backgroundColor: theme.colors.primary.container }}
         >
-          <div className="absolute inset-y-0 left-0 bg-white animate-loading-bar w-full origin-left"></div>
+          <div 
+            className="absolute inset-y-0 left-0 animate-loading-bar w-full origin-left"
+            style={{ backgroundColor: theme.colors.primary.base }}
+          ></div>
         </div>
       </div>
       <style>{`
